@@ -1,0 +1,31 @@
+﻿<label><input type="radio" ng-model="searchType" name="r1" value="searchByName" />Search By Name</label>
+<br />
+<label><input type="radio" ng-model="searchType" name="r1" value="searchByDate" />Search By Date</label>
+<br /><br />
+<input type="text" placeholder="Search by name" ng-model="name" ng-show="searchType == 'searchByName'" />
+<div  ng-show="searchType == 'searchByDate'">
+    <lable>Start Date</lable>
+    <input type="date" class="form-control" name="from" ng-model="from">
+    <lable>End Date</lable><input type="date" class="form-control" name="to" ng-model="to">
+</div>
+<br /><br />
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Job Title</th>
+            <th>Age</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="employee in employees | filterReord:searchType:name:from:to">
+            <td> {{ employee.FIRST_NAME }} {{ employee.LAST_NAME }}</td>
+            <td> {{ employee.JOB_TITLE }} </td>
+            <td> {{ employee.AGE  }} </td>
+            <td> {{ employee.START_DATE | date:'MM/dd/yyyy' }} </td>
+            <td> {{ employee.END_DATE | date:'MM/dd/yyyy' }} </td>
+        </tr>
+    </tbody>
+</table>
