@@ -12,13 +12,10 @@ namespace SearchAPI.Controllers
     
     public class EmployeeListController : ApiController
     {
-        //[RoutePrefix("Employees")]
         [HttpGet]
         public async Task<IHttpActionResult> Get()
         {
-            //List<EMPLOYEE> list = new List<EMPLOYEE>();
             EMPLOYEE_SEARCH_DBEntities db = new EMPLOYEE_SEARCH_DBEntities();
-            //list = db.EMPLOYEES.ToList();
             return await Task.Run(() => this.Ok(db.EMPLOYEES.ToList()));
         }
     }
